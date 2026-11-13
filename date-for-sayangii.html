@@ -1,0 +1,635 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Date for Sayang ♡</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Trebuchet MS', sans-serif;
+  background: linear-gradient(135deg, #fff0f5, #fffaf0, #f5edff);
+  color: #80566b;
+  text-align: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 15px;
+}
+
+.card {
+  width: 100%;
+  max-width: 600px;
+  background: rgba(255,255,255,.85);
+  border-radius: 30px;
+  padding: 40px 25px;
+  box-shadow: 0 15px 45px #dca5bb55;
+  border: 1px solid white;
+  animation: appear 1s ease;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.envelope {
+  font-size: 65px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  50% { transform: translateY(-10px); }
+}
+
+h1 {
+  font-family: Georgia, serif;
+  font-size: 42px;
+  color: #bd6e8d;
+}
+
+h2 {
+  font-family: Georgia, serif;
+  color: #bd6e8d;
+}
+
+.subtitle {
+  line-height: 1.8;
+  color: #a17e90;
+}
+
+.question {
+  font-family: Georgia, serif;
+  font-size: 28px;
+  margin-top: 30px;
+}
+
+.highlight {
+  color: #d77e9f;
+  font-style: italic;
+}
+
+.buttons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  border-radius: 50px;
+  padding: 15px 23px;
+  font-size: 15px;
+  font-weight: bold;
+  transition: .3s;
+}
+
+.yes {
+  color: white;
+  background: linear-gradient(135deg,#efa6bd,#d47798);
+  box-shadow: 0 7px 18px #df9bb855;
+}
+
+.yes:hover {
+  transform: translateY(-4px);
+}
+
+.yes2 {
+  color: #a75f7b;
+  background: #fce5ee;
+}
+
+/* PHOTO SECTION */
+.photo-section {
+  margin: 25px auto;
+  position: relative;
+  width: 250px;
+}
+
+.photo-frame {
+  width: 230px;
+  height: 290px;
+  margin: auto;
+  padding: 9px;
+  background: white;
+  border-radius: 120px 120px 22px 22px;
+  box-shadow: 0 10px 30px #dca5bb66;
+  transform: rotate(-2deg);
+  overflow: hidden;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 115px 115px 15px 15px;
+}
+
+.lily-decoration {
+  position: absolute;
+  font-size: 42px;
+  z-index: 2;
+}
+
+.lily-left {
+  left: -20px;
+  bottom: 5px;
+  transform: rotate(-25deg);
+}
+
+.lily-right {
+  right: -20px;
+  top: 5px;
+  transform: rotate(25deg);
+}
+
+.photo-caption {
+  margin-top: 22px;
+  font-family: Georgia, serif;
+  font-style: italic;
+  color: #bd6e8d;
+  font-size: 15px;
+}
+
+/* SURPRISE PAGE */
+#surprise {
+  display: none;
+  animation: appear .8s ease;
+}
+
+.itinerary {
+  background: #fff5f8;
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: 25px;
+  text-align: left;
+}
+
+.itinerary h3 {
+  text-align: center;
+  font-family: Georgia, serif;
+  color: #bd6e8d;
+  font-size: 23px;
+}
+
+.stop {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  padding: 15px 0;
+  border-bottom: 1px dashed #e9c5d3;
+}
+
+.stop:last-child {
+  border: none;
+}
+
+.time {
+  min-width: 85px;
+  color: #d47798;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.activity strong {
+  display: block;
+  color: #80566b;
+}
+
+.activity p {
+  font-size: 12px;
+  color: #a17e90;
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+/* COMMENT BOX */
+.comment-section {
+  background: #fff8fa;
+  border: 1px solid #f1d2df;
+  border-radius: 22px;
+  padding: 23px 18px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.comment-section h3 {
+  font-family: Georgia, serif;
+  font-size: 23px;
+  color: #bd6e8d;
+  margin-top: 5px;
+}
+
+.comment-section p {
+  font-size: 13px;
+  color: #a17e90;
+  line-height: 1.7;
+}
+
+.comment-section textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 15px;
+  border: 1px solid #edc5d3;
+  border-radius: 15px;
+  outline: none;
+  resize: vertical;
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 14px;
+  color: #80566b;
+  background: white;
+  margin-top: 12px;
+}
+
+.comment-section textarea:focus {
+  border-color: #d47798;
+  box-shadow: 0 0 8px #e9b5c955;
+}
+
+.comment-button {
+  background: linear-gradient(135deg,#efa6bd,#d47798);
+  color: white;
+  margin-top: 12px;
+  width: 100%;
+}
+
+.comment-result {
+  display: none;
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 15px;
+  color: #bd6e8d;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.ending {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 21px;
+  color: #c47794;
+  margin-top: 25px;
+}
+
+.heart {
+  position: fixed;
+  bottom: -30px;
+  animation: float 10s linear infinite;
+  color: #e8a1ba;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes float {
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.music {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  background: white;
+  color: #bd6e8d;
+  box-shadow: 0 4px 15px #dca5bb55;
+  font-size: 12px;
+  z-index: 100;
+}
+
+footer {
+  font-size: 11px;
+  color: #bd96a8;
+  margin-top: 20px;
+}
+
+@media(max-width:480px) {
+  h1 { font-size: 35px; }
+  .question { font-size: 24px; }
+  .card { padding: 35px 20px; }
+  .photo-frame { width: 205px; height: 265px; }
+  .photo-section { width: 225px; }
+  .lily-decoration { font-size: 35px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND MUSIC -->
+<audio id="bgMusic" loop preload="auto">
+  <source src="penjaga-hati.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+<div class="card">
+
+<!-- OPENING PAGE -->
+
+<div id="proposal">
+
+<p>♡ Hello, Aimi Shamimi ♡</p>
+
+<div class="photo-section">
+
+  <span class="lily-decoration lily-left">🤍</span>
+  <span class="lily-decoration lily-right">🌸</span>
+
+  <div class="photo-frame">
+    <img src="gambar-dia.jpg" alt="My favourite person">
+  </div>
+
+</div>
+
+<p class="photo-caption">
+For someone who makes my world bloom. ♡
+</p>
+
+<h1>For You,<br>
+<span class="highlight">Sayang</span></h1>
+
+<p class="subtitle">
+You are officially invited to a little date.
+</p>
+
+<hr style="width:50px;border:1px solid #edb2c6;margin:25px auto;">
+
+<p class="question">
+Will you go on a date with me,
+<span class="highlight">Sayang?</span>
+</p>
+
+<p class="subtitle">
+Just you, me and a little moment together.
+</p>
+
+<div class="buttons">
+
+<button class="yes" onclick="acceptDate()">
+YES, ABSOLUTELY! ♡
+</button>
+
+<button class="yes yes2" onclick="acceptDate()">
+YES, OF COURSE! 💗
+</button>
+
+</div>
+
+</div>
+
+
+<!-- SURPRISE PAGE -->
+
+<div id="surprise">
+
+<div class="envelope">🌷</div>
+
+<h2> Cant wait to see you Sayangggg!</h2>
+
+<p class="subtitle">
+Thank you for saying yes, Sayang.
+I can't wait to spend this little moment with you.
+</p>
+
+<div class="itinerary">
+
+<h3>♡ What are we gonna do ? ♡</h3>
+
+<div class="stop">
+<div class="time">10:00 AM</div>
+<div class="activity">
+<strong>First Meeting</strong>
+<p>Meet up and start our little adventure.</p>
+</div>
+</div>
+
+<div class="stop">
+<div class="time">11:00 AM</div>
+<div class="activity">
+<strong>Food Hunting</strong>
+<p>Jom makan apa yang sayang craving.</p>
+</div>
+</div>
+
+<div class="stop">
+<div class="time">2:00 PM</div>
+<div class="activity">
+<strong>We do photobooth</strong>
+<p>Our first ever photobooth together and make memories!!</p>
+</div>
+</div>
+
+
+
+<div class="stop">
+<div class="time">5:00 PM</div>
+<div class="activity">
+<strong>Explore and Chill</strong>
+<p>We can go to our museum date at Balai Seni Negara or anywhere you want. </p>
+</div>
+</div>
+
+<div class="stop">
+<div class="time">8:00 PM</div>
+<div class="activity">
+<strong>Movie Time</strong>
+<p>Any movie of your choice.</p>
+</div>
+</div>
+
+
+</div>
+
+<p class="subtitle">
+The schedule can change, but I hope the memories stay.
+</p>
+
+<div class="ending">
+"Maybe this is the beginning of something beautiful." ♡
+</div>
+
+
+<!-- COMMENT BOX -->
+
+<div class="comment-section">
+
+<div style="font-size:35px;">💌</div>
+
+<h3>A Little Message for Me</h3>
+
+<p>
+Before you go, I would love to hear something from you.
+<br>
+What do you think about our little date?
+</p>
+
+<textarea id="commentText"
+placeholder="Write something here, Sayang... ♡"></textarea>
+
+<button class="comment-button" onclick="submitComment()">
+Send Your Little Message ♡
+</button>
+
+<div class="comment-result" id="commentResult"></div>
+
+<button class="comment-button"
+id="copyButton"
+style="display:none;background:#fce5ee;color:#a75f7b;"
+onclick="copyComment()">
+Copy Message
+</button>
+
+</div>
+
+</div>
+
+<footer>
+Made with love, just for you ♡
+<br>
+-from your beloved boyfriend (pls say yes)
+</footer>
+
+</div>
+</div>
+
+<!-- MUSIC BUTTON -->
+
+<button class="music" onclick="toggleMusic()" id="musicBtn">
+♫ Play Penjaga Hati
+</button>
+
+<script>
+
+// YES BUTTON
+function acceptDate() {
+  document.getElementById("proposal").style.display = "none";
+  document.getElementById("surprise").style.display = "block";
+
+  window.scrollTo({top:0, behavior:"smooth"});
+
+  for(let i=0;i<35;i++) {
+    let heart = document.createElement("div");
+    heart.innerHTML = ["💗","💕","🌸","✨"][Math.floor(Math.random()*4)];
+    heart.style.position = "fixed";
+    heart.style.left = Math.random()*100+"vw";
+    heart.style.top = Math.random()*100+"vh";
+    heart.style.fontSize = "22px";
+    heart.style.pointerEvents = "none";
+    heart.style.zIndex = "99";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>heart.remove(),2000);
+  }
+}
+
+
+// COMMENT BOX
+let savedComment = "";
+
+function submitComment() {
+  let comment = document.getElementById("commentText").value.trim();
+
+  if(comment === "") {
+    alert("Don't leave me with an empty message, Sayang! ♡");
+    return;
+  }
+
+  savedComment = comment;
+
+  let result = document.getElementById("commentResult");
+  result.style.display = "block";
+  result.innerHTML = "Your message is saved on this page. ♡<br><br>" +
+    escapeHTML(comment);
+
+  document.getElementById("copyButton").style.display = "block";
+}
+
+function escapeHTML(text) {
+  let div = document.createElement("div");
+  div.textContent = text;
+  return div.innerHTML.replace(/\n/g, "<br>");
+}
+
+function copyComment() {
+  if(!savedComment) return;
+
+  if(navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(savedComment)
+      .then(() => alert("Message copied! Send it to me, Sayang. ♡"))
+      .catch(() => fallbackCopy());
+  } else {
+    fallbackCopy();
+  }
+}
+
+function fallbackCopy() {
+  let textArea = document.createElement("textarea");
+  textArea.value = savedComment;
+  document.body.appendChild(textArea);
+  textArea.select();
+  document.execCommand("copy");
+  textArea.remove();
+  alert("Message copied! Send it to me, Sayang. ♡");
+}
+
+
+// FLOATING HEARTS
+setInterval(()=>{
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = ["♡","♥","🌸"][Math.floor(Math.random()*3)];
+  heart.style.left = Math.random()*100+"vw";
+  heart.style.fontSize = (15+Math.random()*20)+"px";
+  document.body.appendChild(heart);
+
+  setTimeout(()=>heart.remove(),10000);
+},800);
+
+
+// BACKGROUND MUSIC
+function toggleMusic() {
+
+  const music = document.getElementById("bgMusic");
+  const button = document.getElementById("musicBtn");
+
+  if (music.paused) {
+
+    music.play()
+      .then(() => {
+        button.innerText = "♫ Pause music";
+      })
+      .catch((error) => {
+        console.error("Music error:", error);
+        alert("Music cannot be played. Please check your MP3 file.");
+      });
+
+  } else {
+
+    music.pause();
+    button.innerText = "♫ Play Penjaga Hati";
+
+  }
+}
+
+</script>
+
+</body>
+</html>
